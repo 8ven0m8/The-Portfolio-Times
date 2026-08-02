@@ -157,19 +157,35 @@ if (contactForm) {
 
 /* Resume PDF Preview Toggle Handler */
 const viewResumeBtn = document.getElementById('viewResumeBtn');
+const heroViewResumeBtn = document.getElementById('heroViewResumeBtn');
 const resumePreviewBox = document.getElementById('resumePreviewBox');
 const closeResumeBtn = document.getElementById('closeResumeBtn');
+
+function openResumePreview() {
+  if (!resumePreviewBox) return;
+  resumePreviewBox.style.display = 'block';
+  if (viewResumeBtn) {
+    const spanText = viewResumeBtn.querySelector('span');
+    if (spanText) spanText.textContent = 'Hide Resume Preview';
+  }
+  resumePreviewBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+if (heroViewResumeBtn) {
+  heroViewResumeBtn.addEventListener('click', openResumePreview);
+}
 
 if (viewResumeBtn && resumePreviewBox) {
   viewResumeBtn.addEventListener('click', function () {
     const isHidden = resumePreviewBox.style.display === 'none' || !resumePreviewBox.style.display;
-    resumePreviewBox.style.display = isHidden ? 'block' : 'none';
-    const spanText = viewResumeBtn.querySelector('span');
-    if (spanText) {
-      spanText.textContent = isHidden ? 'Hide Resume Preview' : 'View Resume Here';
-    }
     if (isHidden) {
-      resumePreviewBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      openResumePreview();
+    } else {
+      resumePreviewBox.style.display = 'none';
+      const spanText = viewResumeBtn.querySelector('span');
+      if (spanText) {
+        spanText.textContent = 'View Resume Here';
+      }
     }
   });
 
