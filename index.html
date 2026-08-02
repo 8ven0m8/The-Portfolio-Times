@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Portfolio Times</title>
+  <meta name="description"
+    content="Pranjal is a CS engineer at VIT Vellore building agentic AI systems and full-stack products, including FluxApply.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="load-seq">
+
+  <div class="scroll-bar" id="scrollBar"></div>
+
+  <div class="ticker">
+    <div class="ticker-track">
+      <span class="ticker-item"><span class="dot"></span>Wanted since 2026</span>
+      <span class="ticker-item"><span class="dot"></span>Currently open to remote AI/ML roles</span>
+      <span class="ticker-item"><span class="dot"></span>Building agentic systems</span>
+      <span class="ticker-item"><span class="dot"></span>VIT Vellore, Class of 2023</span>
+      <span class="ticker-item"><span class="dot"></span>Wanted since 2026</span>
+      <span class="ticker-item"><span class="dot"></span>Currently open to remote AI/ML roles</span>
+      <span class="ticker-item"><span class="dot"></span>Building agentic systems since 2024</span>
+      <span class="ticker-item"><span class="dot"></span>VIT Vellore, Class of 2023</span>
+    </div>
+  </div>
+
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <a href="#research">Research</a>
+    <a href="#work">Work</a>
+    <a href="#stack">Stack</a>
+    <a href="#contact" class="btn" style="text-align:center;">Hire Me</a>
+  </div>
+
+  <!-- MASTHEAD -->
+  <div class="masthead-bar">
+    <div class="wrap masthead-meta" style="border:none; padding:0;">
+      <span>Bhaktapur / Bagmati / Nepal</span>
+      <span id="editionTag">The Systems Edition</span>
+      <span>Est. 2026</span>
+    </div>
+  </div>
+  <div class="masthead-title">
+    <div class="portfolio-times-box">
+      <h1>The Portfolio Times</h1>
+    </div>
+    <div class="wrap">
+      <div class="masthead-sub">The Build Log of a Software Engineer</div>
+      <div class="masthead-meta" style="border:none; padding-top:14px;">
+        <span id="dateTag"></span>
+        <span>Vol. II</span>
+        <span>Selected Works &amp; Notes</span>
+        <span>Price: One Cup of Filter Coffee</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+      <div class="nav-logo">Pranjal Sapkota</div>
+      <div class="nav-links">
+        <a href="#research">Research</a>
+        <a href="#work">Work</a>
+        <a href="#stack">Stack</a>
+        <a href="#contact" class="btn btn-outline">Hire Me</a>
+      </div>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-top">
+        <span class="eyebrow">Front Page</span>
+        <span class="eyebrow">Filed under: Open Investigations</span>
+      </div>
+      <div class="hero-grid">
+        <div>
+          <div class="case-no">Case No. 27 — Findings Published</div>
+          <h2 id="heroHeadline">A AI/ML engineer who builds agents that <em>actually ship.</em></h2>
+          <p class="dropcap">Pranjal is wanted for orchestrating autonomous AI systems and full-stack architectures end
+            to end. Authorities report the suspect was last seen deploying high-impact neural pipelines while actively
+            remaining on the run for remote AI/ML engineering roles.</p>
+          <p
+            class="dropcap-2">
+            Field intelligence reveals a habitual pattern of converting complex research papers into production-ready
+            web APIs, autonomous multi-agent workflows, and scalable backends. Investigators urge engineering teams to
+            approach with competitive remote opportunities before another offer claims the subject.</p>
+          <p
+            class="dropcap-2">
+            Bystanders describe the suspect as armed with strong coffee, dangerously clicky keyboard, and an unyielding
+            refusal to leave a bug unresolved overnight. Approach with caution.</p>
+          <div class="byline">By <strong>The Portfolio Times</strong> · Reporting from Bhaktapur, between coursework and
+            production deploys</div>
+          <div class="hero-ctas">
+            <a href="#work" class="btn">Read the work →</a>
+          </div>
+        </div>
+        <div class="hero-side">
+          <div class="exhibit-shot tilt-target" id="heroTilt" style="aspect-ratio:3/4;">
+            <img src="images/photo.png" alt="Portrait of Pranjal">
+          </div>
+          <div class="hero-caption"><strong>Pictured:</strong> the subject, mid-deploy.</div>
+          <p>He likes the whole pipeline from a LangGraph node diagram on paper to a webhook firing in production.</p>
+        </div>
+      </div>
+
+      <div class="stat-strip">
+        <div>
+          <div class="big">2027</div>
+          <div class="lbl">Graduating Class</div>
+        </div>
+        <div>
+          <div class="big">Vellore</div>
+          <div class="lbl">VIT · CSE</div>
+        </div>
+        <div>
+          <div class="big">Remote</div>
+          <div class="lbl">Open to relocate</div>
+        </div>
+        <div>
+          <div class="big">Agentic AI</div>
+          <div class="lbl">Primary focus</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- RESEARCH -->
+  <section class="section" id="research" style="background:var(--paper); border-bottom:1px solid var(--rule-faint);">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div>
+          <span class="eyebrow">The Laboratory</span>
+          <h3>Research &amp; Papers</h3>
+        </div>
+        <div class="right">Manuscripts &amp; Publications<br>Active Investigations</div>
+      </div>
+
+      <a href="https://github.com/grishmghosh/Pathogen-intelligence-system" target="_blank" rel="noopener noreferrer" class="exhibit" data-reveal style="border-bottom:none;">
+        <div class="exhibit-shot">
+          <img src="images/pathogen_plates.png" alt="Pathogen Detection Plate Images Screenshot">
+          <div class="exhibit-tape"></div>
+          <div class="exhibit-label">Paper I</div>
+          <div class="exhibit-src">recovered from github</div>
+        </div>
+        <div class="exhibit-body">
+          <div class="exhibit-tag">Paper I · Computer Vision &amp; Deep Learning</div>
+          <div class="exhibit-meta">Ongoing Research</div>
+          <h4>Comparative Evaluation of CNN and Vision
+Transformer Architectures for Waterborne
+Pathogen Detection from Plate Images</h4>
+          <p class="dropcap">Evaluating plate images of 4 waterborne pathogens E. coli, K. pneumoniae, P. aeruginosa and S. aureus
+            with CNN models (ResNet and EfficientNet) and Vision Transformer models (Swin T and ConvNeXt).
+            Finding their model perfoemances and evaluating robustness and generalization capabilities across different datasets and conditions.
+            This will be converted into a usable product after the paper is published.
+          </p>
+          <div class="chips">
+            <span class="chip">Vision Transformers</span><span class="chip">CNN</span><span class="chip">PyTorch</span><span class="chip">Computer Vision</span>
+          </div>
+          <div class="exhibit-foot">
+            <span>In Preparation</span>
+            <span class="open-case">Open case file →</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="section" id="work">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div>
+          <span class="eyebrow">The Evidence</span>
+          <h3>Selected Works</h3>
+        </div>
+        <div class="right">Exhibits A – D<br>Entered 2023 – Now</div>
+      </div>
+
+      <a href="https://www.fluxapply.me" target="_blank" rel="noopener noreferrer" class="exhibit" data-reveal>
+        <div class="exhibit-shot">
+          <img src="images/fluxapply.png" alt="FluxApply Screenshot">
+          <div class="exhibit-tape"></div>
+          <div class="exhibit-label">Exhibit A</div>
+          <div class="exhibit-src">recovered from fluxapply.me</div>
+        </div>
+        <div class="exhibit-body">
+          <div class="exhibit-tag">Exhibit A · Saas</div>
+          <div class="exhibit-meta">Founder Project</div>
+          <h4>FluxApply</h4>
+          <p class="dropcap">AI-powered web app that tailors resumes and cover letters to job descriptions
+            in seconds, built with FastAPI, LangGraph, PostgreSQL
+            and Next.js. Focus is solely on the anti fabrication mechanism implemented.
+            Designed an 8-node LLM pipeline with ID-based fact matching to rewrite only
+            relevant resume content, integrated Google OAuth, AWS S3 storage, and Razorpay
+            billing for a production-ready SaaS product.</p>
+          <div class="chips">
+            <span class="chip">Next.js</span><span class="chip">FastAPI</span><span class="chip">LangGraph</span><span
+              class="chip">PostgreSQL</span><span class="chip">Railway</span><span class="chip">AWS S3</span>
+          </div>
+          <div class="exhibit-foot">
+            <span>2026 July</span>
+            <span class="open-case">Open case file →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://github.com/8ven0m8/Agentic-MCP-Chatbot" target="_blank" rel="noopener noreferrer" class="exhibit"
+        data-reveal>
+        <div class="exhibit-shot">
+          <img src="images/mcp-chatbot.png" alt="MCP ReAct Agent Chatbot Screenshot">
+          <div class="exhibit-tape"></div>
+          <div class="exhibit-label">Exhibit B</div>
+          <div class="exhibit-src">recovered from open source build</div>
+        </div>
+        <div class="exhibit-body">
+          <div class="exhibit-tag">Exhibit B · Research</div>
+          <div class="exhibit-meta">Open source Project</div>
+          <h4>MCP ReAct Agent Chatbot</h4>
+          <p class="dropcap">Built a ReAct agent loop in LangGraph with conditional tool-calling edges across web
+            search, filesystem, GitHub, and Gmail via MCP. Persisted multi-turn conversation history via async SQLite
+            checkpointer; Streamlit frontend with live streaming and tool-status indicators.</p>
+          <div class="chips">
+            <span class="chip">LangGraph</span><span class="chip">MCP</span><span class="chip">Streamlit</span><span
+              class="chip">LangSmith</span><span class="chip">PostgreSQL</span>
+          </div>
+          <div class="exhibit-foot">
+            <span>2026 June</span>
+            <span class="open-case">Open case file →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://github.com/8ven0m8/SmallLLM-Pathology-Model" target="_blank" rel="noopener noreferrer"
+        class="exhibit" data-reveal>
+        <div class="exhibit-shot">
+          <img src="images/smallllm.png" alt="SmallLLM Pathology Model Screenshot">
+          <div class="exhibit-tape"></div>
+          <div class="exhibit-label">Exhibit C</div>
+          <div class="exhibit-src">recovered from open source build</div>
+        </div>
+        <div class="exhibit-body">
+          <div class="exhibit-tag">Exhibit C · Research</div>
+          <div class="exhibit-meta">Personal Project</div>
+          <h4>SmallLLM – Pathology Language Model</h4>
+          <p class="dropcap">Built a GPT-2 style decoder-only transformer in PyTorch (10.8M and 25M params) with
+            self-attention, residual connections, and layer norm from scratch. Curated 52M characters from 13 pathology
+            textbooks, cleaned OCR artifacts, and published dataset on HuggingFace (with 59 public downloads). Achieved
+            val loss 0.8794 on the 25M model.</p>
+          <div class="chips">
+            <span class="chip">PyTorch</span><span class="chip">LLM</span><span class="chip">Transformers</span><span
+              class="chip">HuggingFace</span><span class="chip">NLP</span>
+          </div>
+          <div class="exhibit-foot">
+            <span>2026 June</span>
+            <span class="open-case">Open case file →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://github.com/8ven0m8/Credit-card-fraud-detection" target="_blank" rel="noopener noreferrer"
+        class="exhibit" data-reveal style="border-bottom:none;">
+        <div class="exhibit-shot">
+          <img src="images/fraud.png" alt="Credit Card Fraud Detection Screenshot">
+          <div class="exhibit-tape"></div>
+          <div class="exhibit-label">Exhibit D</div>
+          <div class="exhibit-src">recovered from open source build</div>
+        </div>
+        <div class="exhibit-body">
+          <div class="exhibit-tag">Exhibit D · Machine Learning</div>
+          <div class="exhibit-meta">Personal Project</div>
+          <h4>Credit Card Fraud Detection</h4>
+          <p class="dropcap">Built a stacked ensemble (Random Forest, XGBoost, LightGBM, Logistic Regression) on highly
+            imbalanced data using class weighting and undersampling. Achieved F1 of 0.85 (Precision: 0.92, Recall: 0.79)
+            after threshold tuning; deployed as a FastAPI endpoint on Render.</p>
+          <div class="chips">
+            <span class="chip">XGBoost</span><span class="chip">LightGBM</span><span class="chip">FastAPI</span><span
+              class="chip">Scikit-Learn</span><span class="chip">Render</span>
+          </div>
+          <div class="exhibit-foot">
+            <span>2026 March</span>
+            <span class="open-case">Open case file →</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section class="section" id="stack" style="background:var(--paper-dim);">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div>
+          <span class="eyebrow">Forensics</span>
+          <h3>The Lab Report</h3>
+        </div>
+        <div class="right">Substances detected on the subject,<br>as of this edition</div>
+      </div>
+
+      <div class="table-scroll" data-reveal>
+        <table class="lab-table">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Code</th>
+              <th>Substances (Tools &amp; Tech)</th>
+              <th>Finding</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="transition-delay:.02s">
+              <td>Languages</td>
+              <td class="code">LANG</td>
+              <td class="det">Python · SQL · JavaScript</td>
+              <td><span class="badge core">Primary tool</span></td>
+            </tr>
+            <tr style="transition-delay:.06s">
+              <td>Agentic AI Frameworks</td>
+              <td class="code">AG-AI</td>
+              <td class="det">LangChain · LangGraph · LangSmith · MCP</td>
+              <td><span class="badge core">Core Focus</span></td>
+            </tr>
+            <tr style="transition-delay:.10s">
+              <td>ML / Deep Learning</td>
+              <td class="code">ML-DL</td>
+              <td class="det">PyTorch · scikit-learn · XGBoost · LightGBM</td>
+              <td><span class="badge core">Core Focus</span></td>
+            </tr>
+            <tr style="transition-delay:.14s">
+              <td>Web Development</td>
+              <td class="code">WEB</td>
+              <td class="det">FastAPI · Django · Next.js · Streamlit · Tailwind</td>
+              <td><span class="badge core">Primary tool</span></td>
+            </tr>
+            <tr style="transition-delay:.18s">
+              <td>Data Tools</td>
+              <td class="code">DATA</td>
+              <td class="det">Pandas · NumPy · Matplotlib · Seaborn</td>
+              <td><span class="badge">Comfortable</span></td>
+            </tr>
+            <tr style="transition-delay:.22s">
+              <td>Databases</td>
+              <td class="code">DB</td>
+              <td class="det">PostgreSQL · MongoDB · SQLite</td>
+              <td><span class="badge">Comfortable</span></td>
+            </tr>
+            <tr style="transition-delay:.26s">
+              <td>Deployment</td>
+              <td class="code">DEPL</td>
+              <td class="det">Railway · Render · Vercel · AWS S3</td>
+              <td><span class="badge">Comfortable</span></td>
+            </tr>
+            <tr style="transition-delay:.30s">
+              <td>Developer Tools</td>
+              <td class="code">DEV</td>
+              <td class="det">Git · Docker · Linux · Google Colab · Kaggle · Google OAuth</td>
+              <td><span class="badge">Comfortable</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="lab-note">Findings are illustrative — what he reaches for day to day, not a ranking.</div>
+    </div>
+  </section>
+
+  <!-- LEDGER -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div>
+          <span class="eyebrow">Known Whereabouts</span>
+          <h3>The Career Ledger</h3>
+        </div>
+        <div class="right">Movements on record since 2023</div>
+      </div>
+      <div class="ledger-row" data-reveal>
+        <div class="ledger-date">2023 — 2027</div>
+        <div class="ledger-role">
+          <h4>B.Tech, Computer Science &amp; Engineering</h4>
+          <div class="org">VIT Vellore</div>
+        </div>
+        <div class="ledger-desc">Coursework spanning compiler design, cryptography, and reinforcement learning,
+          alongside independent work on agentic systems and embedded hardware.</div>
+      </div>
+      <div class="ledger-row" data-reveal>
+        <div class="ledger-date">2025 - Now</div>
+        <div class="ledger-role">
+          <h4>Independent Research</h4>
+          <div class="org">Agentic Systems, Deep learning systems &amp; RL</div>
+        </div>
+        <div class="ledger-desc">Built LLM orchestration tools, deep learning systems, computer vision systems and
+          reinforcement-learning simulations outside of
+          coursework.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact" style="background:var(--paper-dim);">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div>
+          <span class="eyebrow">Submit a Tip</span>
+          <h3>Letters &amp; Commissions</h3>
+        </div>
+        <div class="right">The desk is open — 2026</div>
+      </div>
+
+      <div class="contact-grid" data-reveal>
+        <div class="contact-form">
+          <h4>Put it in writing</h4>
+          <p>An internship, a role, or a good question about agentic systems send it through and he'll get back to
+            you.</p>
+          <form id="contactForm">
+            <input type="hidden" name="access_key" id="web3AccessKey" value="adc05165-5d27-44d2-868f-52b5feace452">
+            <input type="hidden" name="from_name" value="The Portfolio Times Contact Desk">
+            <input type="hidden" name="subject" value="New Lead / Message from Portfolio Times">
+            <div class="field-row">
+              <div><label>Your name</label><input type="text" name="name" id="contactName" placeholder="Detective John Doe" required></div>
+              <div><label>Email</label><input type="email" name="email" id="contactEmail" placeholder="johndoe.fbi@gmail.com" required></div>
+            </div>
+            <label>Subject</label>
+            <input type="text" name="custom_subject" id="contactSubject" placeholder="Any leads on the wanted criminal..." style="margin-bottom:18px;">
+            <label>The story</label>
+            <textarea name="message" id="contactStory" placeholder="Details about your lead..." required></textarea>
+            <div class="form-foot">
+              <span class="eyebrow" id="formStatusMsg">Usually replies within 24 hours</span>
+              <button type="submit" id="contactSubmitBtn" class="btn">Send the letter</button>
+            </div>
+          </form>
+        </div>
+        <div class="contact-side">
+          <div class="side-block">
+            <h5>Direct line</h5>
+            <div class="val"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=sapkotapranjal25@gmail.com" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;">sapkotapranjal25@gmail.com</a></div>
+            <div class="sub">For internships, contract work, and agentic-systems talk.</div>
+          </div>
+          <div class="side-block">
+            <h5>The desk (Current location)</h5>
+            <div class="val">Vellore, India</div>
+            <div class="sub">IST · open to remote work worldwide.</div>
+          </div>
+          <div class="side-block">
+            <h5>Availability</h5>
+            <div class="val">Open to internships</div>
+            <div class="sub">Finishing coursework at VIT actively looking for remote AI/ML
+              roles.</div>
+          </div>
+          <div class="social-row">
+            <a href="https://github.com/8ven0m8" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub" data-tooltip="GitHub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                <path d="M9 18c-4.51 2-5-2-7-2"></path>
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/pranjal-sapkota-6370822a6/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn" data-tooltip="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            <a href="https://www.kaggle.com/pranjalsapkota" target="_blank" rel="noopener noreferrer" aria-label="Kaggle" title="Kaggle" data-tooltip="Kaggle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.825 23.859h-3.416l-5.751-7.784-2.614 2.474v5.31H3.644V.141h3.400v13.567l7.747-8.848h4.281l-7.072 7.876 7.825 11.283z"/>
+              </svg>
+            </a>
+            <a href="https://huggingface.co/Pranjal888" target="_blank" rel="noopener noreferrer" aria-label="Hugging Face" title="Hugging Face" data-tooltip="Hugging Face">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-3 7a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm6 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-6.75 6.5c0-.414.336-.75.75-.75h6c.414 0 .75.336.75.75-.75 2-2.25 3-3.75 3s-3-1-3.75-3z"/>
+              </svg>
+            </a>
+          </div>
+          <div style="display:flex; gap:10px; margin-top:14px;">
+            <a href="resume.pdf" download class="btn" style="flex:1; display:inline-flex; align-items:center; justify-content:flex-start; gap:8px; padding-left:14px; padding-right:14px;">
+              <span>Download Resume</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+            </a>
+            <button id="viewResumeBtn" class="btn btn-outline" style="flex:1; display:inline-flex; align-items:center; justify-content:flex-start; gap:8px; padding-left:14px; padding-right:14px;">
+              <span>View Resume Here</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESUME PREVIEW CONTAINER -->
+      <div id="resumePreviewBox" style="display:none; margin-top:32px; border:1px solid var(--rule); background:var(--paper); padding:20px; transition:all 0.3s ease;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; border-bottom:1px solid var(--rule-faint); padding-bottom:12px;">
+          <h4 style="font-family:var(--mono); font-size:13px; text-transform:uppercase; letter-spacing:0.08em;">Document Exhibit · Resume Preview</h4>
+          <div style="display:flex; gap:10px;">
+            <a href="resume.pdf" download class="btn btn-outline" style="padding:8px 16px; font-size:13px; font-family:var(--sans); font-weight:500;">Download PDF ↓</a>
+            <button id="closeResumeBtn" class="btn" style="padding:8px 16px; font-size:13px; font-family:var(--sans); font-weight:500;">Close Preview ✕</button>
+          </div>
+        </div>
+        <iframe src="resume.pdf" style="width:100%; height:750px; border:1px solid var(--rule-faint);" title="Resume PDF Preview"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-top">
+        <h2>Pranjal Sapkota<br>The Portfolio Times</h2>
+      </div>
+      <div class="footer-grid">
+        <p>A CS engineer building agentic AI systems and full-stack products from Bhaktapur, Nepal.</p>
+        <div>
+          <h6>Sections</h6>
+          <a href="#work">Selected Works</a>
+          <a href="#stack">The Stack</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div>
+          <h6>The Desk</h6>
+          <a href="#">Bhaktapur, Nepal</a>
+          <a href="#">NPT · Remote-first</a>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sapkotapranjal25@gmail.com" target="_blank" rel="noopener noreferrer">sapkotapranjal25@gmail.com</a>
+        </div>
+        <div>
+          <h6>Wire Services</h6>
+          <a href="https://github.com/8ven0m8" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/pranjal-sapkota-6370822a6/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://www.kaggle.com/pranjalsapkota" target="_blank" rel="noopener noreferrer">Kaggle</a>
+          <a href="https://huggingface.co/Pranjal888" target="_blank" rel="noopener noreferrer">Hugging Face</a>
+        </div>
+      </div>
+      <div class="stamp" data-reveal>Case Open</div>
+      <div class="footer-bottom">
+        <span id="yearTag">© 2026 The Build Log · All rights reserved</span>
+        <span>Printed in Bhaktapur</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
