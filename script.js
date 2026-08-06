@@ -199,3 +199,75 @@ if (viewResumeBtn && resumePreviewBox) {
     });
   }
 }
+
+/* Horizontally Moving & Scrollable Certificate Ledger */
+const certWrapper = document.getElementById('certScrollWrapper');
+const certTrack = document.getElementById('certTrack');
+const certPrevBtn = document.getElementById('certPrevBtn');
+const certNextBtn = document.getElementById('certNextBtn');
+
+if (certWrapper && certTrack) {
+  let isHovered = false;
+  let isMouseDown = false;
+  let startX = 0;
+  let scrollLeftPos = 0;
+  const speed = 0.75;
+
+  function step() {
+    if (!isHovered && !isMouseDown && !reduceMotion) {
+      certWrapper.scrollLeft += speed;
+      const halfWidth = certTrack.scrollWidth / 2;
+      if (halfWidth > 0 && certWrapper.scrollLeft >= halfWidth) {
+        certWrapper.scrollLeft -= halfWidth;
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  certWrapper.addEventListener('mouseenter', () => { isHovered = true; });
+  certWrapper.addEventListener('mouseleave', () => {
+    isHovered = false;
+    isMouseDown = false;
+  });
+
+  certWrapper.querySelectorAll('img').forEach(img => {
+    img.addEventListener('dragstart', (e) => e.preventDefault());
+  });
+
+  certWrapper.addEventListener('mousedown', (e) => {
+    isMouseDown = true;
+    startX = e.pageX - certWrapper.offsetLeft;
+    scrollLeftPos = certWrapper.scrollLeft;
+  });
+  certWrapper.addEventListener('mouseup', () => { isMouseDown = false; });
+  certWrapper.addEventListener('mousemove', (e) => {
+    if (!isMouseDown) return;
+    e.preventDefault();
+    const x = e.pageX - certWrapper.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    certWrapper.scrollLeft = scrollLeftPos - walk;
+  });
+
+  if (certPrevBtn) {
+    certPrevBtn.addEventListener('click', () => {
+      const halfWidth = certTrack.scrollWidth / 2;
+      if (certWrapper.scrollLeft <= 0 && halfWidth > 0) {
+        certWrapper.scrollLeft += halfWidth;
+      }
+      certWrapper.scrollBy({ left: -360, behavior: 'smooth' });
+    });
+  }
+
+  if (certNextBtn) {
+    certNextBtn.addEventListener('click', () => {
+      const halfWidth = certTrack.scrollWidth / 2;
+      if (halfWidth > 0 && certWrapper.scrollLeft >= halfWidth) {
+        certWrapper.scrollLeft -= halfWidth;
+      }
+      certWrapper.scrollBy({ left: 360, behavior: 'smooth' });
+    });
+  }
+
+  requestAnimationFrame(step);
+}
+
