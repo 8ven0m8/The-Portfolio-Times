@@ -203,37 +203,69 @@ if (viewResumeBtn && resumePreviewBox) {
 /* Horizontally Moving & Scrollable Certificate Ledger */
 const certWrapper = document.getElementById('certScrollWrapper');
 const certTrack = document.getElementById('certTrack');
-const certPrevBtn = document.getElementById('certPrevBtn');
-const certNextBtn = document.getElementById('certNextBtn');
 
 if (certWrapper && certTrack) {
+  // Clone initial certificate cards dynamically to create a duplicate set for seamless looping
+  const originalCards = Array.from(certTrack.children);
+  originalCards.forEach(card => {
+    const clone = card.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    clone.querySelectorAll('a').forEach(a => a.setAttribute('tabindex', '-1'));
+    certTrack.appendChild(clone);
+  });
+
   let isHovered = false;
   let isMouseDown = false;
+  let isTouching = false;
   let startX = 0;
   let scrollLeftPos = 0;
   const speed = 0.75;
 
   function step() {
-    if (!isHovered && !isMouseDown && !reduceMotion) {
+    const halfWidth = certTrack.scrollWidth / 2;
+
+    if (!isHovered && !isMouseDown && !isTouching && !reduceMotion) {
       certWrapper.scrollLeft += speed;
-      const halfWidth = certTrack.scrollWidth / 2;
-      if (halfWidth > 0 && certWrapper.scrollLeft >= halfWidth) {
+    }
+
+    // Infinite seamless wrap-around checking
+    if (halfWidth > 0) {
+      if (certWrapper.scrollLeft >= halfWidth) {
         certWrapper.scrollLeft -= halfWidth;
+      } else if (certWrapper.scrollLeft < 0) {
+        certWrapper.scrollLeft += halfWidth;
       }
     }
+
     requestAnimationFrame(step);
   }
 
+  // Hover & Focus events
   certWrapper.addEventListener('mouseenter', () => { isHovered = true; });
   certWrapper.addEventListener('mouseleave', () => {
     isHovered = false;
     isMouseDown = false;
   });
+  certWrapper.addEventListener('focusin', () => { isHovered = true; });
+  certWrapper.addEventListener('focusout', () => { isHovered = false; });
 
+  // Mobile Touch events
+  certWrapper.addEventListener('touchstart', () => {
+    isTouching = true;
+  }, { passive: true });
+  certWrapper.addEventListener('touchend', () => {
+    isTouching = false;
+  }, { passive: true });
+  certWrapper.addEventListener('touchcancel', () => {
+    isTouching = false;
+  }, { passive: true });
+
+  // Prevent default image drag
   certWrapper.querySelectorAll('img').forEach(img => {
     img.addEventListener('dragstart', (e) => e.preventDefault());
   });
 
+  // Mouse Dragging
   certWrapper.addEventListener('mousedown', (e) => {
     isMouseDown = true;
     startX = e.pageX - certWrapper.offsetLeft;
@@ -248,13 +280,18 @@ if (certWrapper && certTrack) {
     certWrapper.scrollLeft = scrollLeftPos - walk;
   });
 
+  // Navigation Buttons
+  const certPrevBtn = document.getElementById('certPrevBtn');
+  const certNextBtn = document.getElementById('certNextBtn');
+
   if (certPrevBtn) {
     certPrevBtn.addEventListener('click', () => {
       const halfWidth = certTrack.scrollWidth / 2;
       if (certWrapper.scrollLeft <= 0 && halfWidth > 0) {
         certWrapper.scrollLeft += halfWidth;
       }
-      certWrapper.scrollBy({ left: -360, behavior: 'smooth' });
+      const scrollStep = window.innerWidth <= 760 ? 290 : 360;
+      certWrapper.scrollBy({ left: -scrollStep, behavior: 'smooth' });
     });
   }
 
@@ -264,7 +301,8 @@ if (certWrapper && certTrack) {
       if (halfWidth > 0 && certWrapper.scrollLeft >= halfWidth) {
         certWrapper.scrollLeft -= halfWidth;
       }
-      certWrapper.scrollBy({ left: 360, behavior: 'smooth' });
+      const scrollStep = window.innerWidth <= 760 ? 290 : 360;
+      certWrapper.scrollBy({ left: scrollStep, behavior: 'smooth' });
     });
   }
 
