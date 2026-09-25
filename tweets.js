@@ -70,7 +70,40 @@ function renderQuote(q) {
   return box;
 }
 
-function renderTweet(t, isLead) {
+const byOldest = (a, b) => (BigInt(a.id) > BigInt(b.id) ? 1 : -1);
+
+// Groups each thread (own tweets replying to own tweets) into one story, oldest part first.
+// Stories are ordered newest first by their opening tweet.
+function groupThreads(tweets) {
+  const byId = new Map(tweets.map((t) => [t.id, t]));
+  const rootOf = (t) => {
+    let root = t;
+    while (root.replyToId && byId.has(root.replyToId)) root = byId.get(root.replyToId);
+    return root;
+  };
+  const stories = new Map();
+  tweets.forEach((t) => {
+    const root = rootOf(t);
+    if (!stories.has(root.id)) stories.set(root.id, []);
+    stories.get(root.id).push(t);
+  });
+  return [...stories.values()]
+    .map((parts) => parts.sort(byOldest))
+    .sort((a, b) => byOldest(b[0], a[0]));
+}
+
+// Everything after the opening tweet of a thread, numbered like the thread on X.
+function renderPart(t, n, total) {
+  const part = el('div', 'wire-part');
+  part.append(el('div', 'wire-part-no', `${n}/${total}`));
+  if (t.segments.length) part.append(renderText(t.segments, 'wire-text'));
+  if (t.media.length) part.append(renderMedia(t.media, t.url));
+  if (t.quote) part.append(renderQuote(t.quote));
+  return part;
+}
+
+function renderStory(parts, isLead) {
+  const [t, ...rest] = parts;
   const article = el('article', isLead ? 'wire-lead' : 'wire-brief');
   const copy = isLead ? el('div', 'wire-lead-copy') : article;
 
@@ -79,6 +112,7 @@ function renderTweet(t, isLead) {
   const time = el('time', null, formatDate(t.createdAt));
   time.dateTime = t.createdAt;
   dateline.append(time);
+  if (rest.length) dateline.append(el('span', null, `Thread · ${parts.length} posts`));
   copy.append(dateline);
 
   if (t.replyTo) {
@@ -93,13 +127,16 @@ function renderTweet(t, isLead) {
     copy.append(text);
   }
 
-  // Briefs run text, media, quote, footer top to bottom; the lead puts its media beside the text.
+  // Briefs run everything top to bottom. The lead splits into its opening copy, its media
+  // and the rest of the thread, so CSS can place the media beside both on wide screens.
   if (!isLead && t.media.length) copy.append(renderMedia(t.media, t.url));
   if (t.quote) copy.append(renderQuote(t.quote));
 
+  const tail = isLead && rest.length ? el('div', 'wire-lead-thread') : copy;
+  rest.forEach((part, i) => tail.append(renderPart(part, i + 2, parts.length)));
   const foot = el('div', 'wire-foot');
-  foot.append(outLink(t.url, 'open-case', 'Read on X'));
-  copy.append(foot);
+  foot.append(outLink(t.url, 'open-case', rest.length ? 'Read the thread on X' : 'Read on X'));
+  tail.append(foot);
 
   if (isLead) {
     article.append(copy);
@@ -107,6 +144,7 @@ function renderTweet(t, isLead) {
       article.classList.add('has-media');
       article.append(renderMedia(t.media, t.url));
     }
+    if (tail !== copy) article.append(tail);
   }
   return article;
 }
@@ -126,9 +164,9 @@ fetch('data/tweets.json', { cache: 'no-cache' })
       showMessage('Nothing on the wire yet.');
       return;
     }
-    const [lead, ...rest] = tweets;
-    wireLead.append(renderTweet(lead, true));
-    rest.forEach((t) => wireColumns.append(renderTweet(t, false)));
+    const [lead, ...rest] = groupThreads(tweets);
+    wireLead.append(renderStory(lead, true));
+    rest.forEach((story) => wireColumns.append(renderStory(story, false)));
     wireStatus.hidden = true;
     wireBody.classList.add('ready');
   })

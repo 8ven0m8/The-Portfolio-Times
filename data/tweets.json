@@ -1,4 +1,70 @@
 {
   "handle": "TheByzGenRL",
-  "tweets": []
+  "updatedAt": "2026-09-25T07:15:13.239Z",
+  "tweets": [
+    {
+      "id": "2102532591027142672",
+      "url": "https://x.com/TheByzGenRL/status/2102532591027142672",
+      "createdAt": "2026-09-22T22:56:47.000Z",
+      "replyTo": "TheByzGenRL",
+      "replyToId": "2102532588481163491",
+      "segments": [
+        {
+          "text": "check each bin's cleanliness, see how far it is from an 80% passing grade, average all 4 bins, make the number louder, then squish it into a safe range between -1 and +1. That final squished number is the reward the sort agent gets that step."
+        }
+      ],
+      "media": [],
+      "quote": null
+    },
+    {
+      "id": "2102532588481163491",
+      "url": "https://x.com/TheByzGenRL/status/2102532588481163491",
+      "createdAt": "2026-09-22T22:56:46.000Z",
+      "replyTo": "TheByzGenRL",
+      "replyToId": "2102532585914307052",
+      "segments": [
+        {
+          "text": "- 2.0/0.5 is there to amplify (x4) the performance difference, so that bad performance feels a lot worse and good performance feels a lot better.\n- tanh function is used to put a ceiling and floor between -1 to +1 on it. Important to prevent extreme reward or punishment values."
+        }
+      ],
+      "media": [],
+      "quote": null
+    },
+    {
+      "id": "2102532585914307052",
+      "url": "https://x.com/TheByzGenRL/status/2102532585914307052",
+      "createdAt": "2026-09-22T22:56:46.000Z",
+      "replyTo": "TheByzGenRL",
+      "replyToId": "2102532583502545339",
+      "segments": [
+        {
+          "text": "- 'pₘ' represents purity of a container m and an empty container counts as 0.9 purity.\n- 'θ' represents passing grade for purity and is set to 0.8.\n- 1/4 ∑ is there to average all 4 bins together."
+        }
+      ],
+      "media": [],
+      "quote": null
+    },
+    {
+      "id": "2102532583502545339",
+      "url": "https://x.com/TheByzGenRL/status/2102532583502545339",
+      "createdAt": "2026-09-22T22:56:45.000Z",
+      "replyTo": null,
+      "replyToId": null,
+      "segments": [
+        {
+          "text": "Calculation of sorting agent's reward provision."
+        }
+      ],
+      "media": [
+        {
+          "type": "photo",
+          "src": "https://pbs.twimg.com/media/HS2t0W0acAAXCjk.png",
+          "alt": "",
+          "width": 405,
+          "height": 71
+        }
+      ],
+      "quote": null
+    }
+  ]
 }

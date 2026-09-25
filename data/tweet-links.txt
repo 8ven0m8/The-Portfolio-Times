@@ -1,9 +1,18 @@
 # Tweets to show on the Tweets page, one link per line.
 #
-# New tweets usually get picked up automatically every hour. When X blocks that
-# (it often does), paste the tweet's link here and commit; the site updates within
-# a few minutes. Deleted tweets disappear from the site on their own, so you never
-# need to remove lines from this file.
+# X's public profile feed doesn't list this account's tweets, so add each new
+# tweet here and push; the site updates within a few minutes. (If X ever starts
+# listing them, the hourly sync picks them up without this file.) Deleted tweets
+# disappear from the site on their own, so you never need to remove lines here.
 #
-# Example:
+# Threads: add only the LAST tweet of the thread; the earlier ones are found from it.
+#
+# To take a tweet off the site but keep it on X, put "hide" in front of its link.
+# Any post of a thread hides the whole thread. Remove the word "hide" to bring it back.
+# (Deleting a line does not remove the tweet from the site.)
+#
+# Examples:
 # https://x.com/TheByzGenRL/status/1234567890123456789
+# hide https://x.com/TheByzGenRL/status/1234567890123456789
+hide https://x.com/TheByzGenRL/status/2102532583502545339
+hide https://x.com/TheByzGenRL/status/2102532591027142672

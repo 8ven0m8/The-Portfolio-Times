@@ -3,7 +3,11 @@
 // Runs hourly in GitHub Actions (.github/workflows/sync-tweets.yml). No login or API key:
 // - New tweets come from X's public profile feed when it responds, plus any links listed
 //   in data/tweet-links.txt (the fallback for when X rate-limits the feed).
+// - Threads: X only links a reply to its parent, so from the last tweet of a thread we
+//   walk up and collect every earlier tweet in it.
 // - Every known tweet is re-checked each run; deleted ones are dropped from the site.
+// - "hide <link>" in tweet-links.txt keeps a tweet (and the rest of its thread) off the
+//   site without deleting it on X.
 //
 // Usage: node scripts/sync-tweets.mjs          (FORCE_SYNC=true to skip the mass-removal guard)
 
@@ -23,15 +27,25 @@ const token = (id) => ((Number(id) / 1e15) * Math.PI).toString(36).replace(/(0+|
 
 async function readLinks() {
   const text = await readFile(LINKS_FILE, 'utf8').catch(() => '');
-  const ids = new Set();
+  const show = new Set();
+  const hide = new Set();
   for (const raw of text.split('\n')) {
-    const line = raw.trim();
+    let line = raw.trim();
     if (!line || line.startsWith('#')) continue;
+    const hidden = /^hide\s+/i.test(line);
+    if (hidden) line = line.replace(/^hide\s+/i, '');
     const id = line.match(/status(?:es)?\/(\d+)/)?.[1] ?? line.match(/^\d+$/)?.[0];
-    if (id) ids.add(id);
-    else console.warn(`tweet-links.txt: can't find a tweet ID in "${line}"`);
+    if (id) (hidden ? hide : show).add(id);
+    else console.warn(`tweet-links.txt: can't find a tweet ID in "${raw.trim()}"`);
   }
-  return ids;
+  return { show, hide };
+}
+
+// Same thread grouping as tweets.js: follow replies to our own tweets up to the opening tweet.
+function threadRoot(t, byId) {
+  let root = t;
+  while (root.replyToId && byId.has(root.replyToId)) root = byId.get(root.replyToId);
+  return root.id;
 }
 
 async function readExisting() {
@@ -136,6 +150,7 @@ function normalize(t) {
     url: tweetUrl(t),
     createdAt: t.created_at,
     replyTo: t.in_reply_to_screen_name ?? null,
+    replyToId: t.in_reply_to_status_id_str ?? null,
     segments: toSegments(t),
     media: toMedia(t),
     quote: q?.user
@@ -151,15 +166,28 @@ async function main() {
   const existing = await readExisting();
   const previous = new Map(existing.tweets.map((t) => [t.id, t]));
   const discovered = await discover();
-  const ids = new Set([...previous.keys(), ...manual, ...discovered]);
+  // Hidden tweets are still looked up, so we know which thread they belong to.
+  const queue = [...new Set([...previous.keys(), ...manual.show, ...manual.hide, ...discovered])];
+  const seen = new Set(queue);
 
   const tweets = [];
   const removed = [];
-  for (const id of ids) {
+  while (queue.length) {
+    const id = queue.shift();
     const result = await lookup(id);
     if (result.status === 'live') {
-      if (isOwn(result.data)) tweets.push(normalize(result.data));
-      else console.warn(`Skipping ${id}: posted by @${result.data.user?.screen_name}, not @${HANDLE}.`);
+      const t = result.data;
+      if (isOwn(t)) {
+        tweets.push(normalize(t));
+        // A reply to our own tweet is part of a thread: fetch the tweet above it too.
+        const parent = t.in_reply_to_status_id_str;
+        if (parent && t.in_reply_to_screen_name?.toLowerCase() === HANDLE.toLowerCase() && !seen.has(parent)) {
+          seen.add(parent);
+          queue.push(parent);
+        }
+      } else {
+        console.warn(`Skipping ${id}: posted by @${t.user?.screen_name}, not @${HANDLE}.`);
+      }
     } else if (result.status === 'gone') {
       if (previous.has(id)) removed.push(id);
       console.log(`${id}: no longer on X${previous.has(id) ? ', removing' : ''}.`);
@@ -181,14 +209,20 @@ async function main() {
     process.exit(1);
   }
 
-  tweets.sort(newestFirst);
-  if (JSON.stringify(tweets) === JSON.stringify(existing.tweets)) {
-    console.log(`No changes (${tweets.length} tweets).`);
+  // Hiding any post of a thread hides the whole thread.
+  const byId = new Map(tweets.map((t) => [t.id, t]));
+  const hiddenThreads = new Set([...manual.hide].filter((id) => byId.has(id)).map((id) => threadRoot(byId.get(id), byId)));
+  const shown = tweets.filter((t) => !hiddenThreads.has(threadRoot(t, byId)));
+  if (shown.length < tweets.length) console.log(`Hiding ${tweets.length - shown.length} tweets marked "hide".`);
+
+  shown.sort(newestFirst);
+  if (JSON.stringify(shown) === JSON.stringify(existing.tweets)) {
+    console.log(`No changes (${shown.length} tweets).`);
     return;
   }
-  const out = { handle: HANDLE, updatedAt: new Date().toISOString(), tweets };
+  const out = { handle: HANDLE, updatedAt: new Date().toISOString(), tweets: shown };
   await writeFile(OUT_FILE, JSON.stringify(out, null, 2) + '\n');
-  console.log(`Wrote ${tweets.length} tweets (${removed.length} removed).`);
+  console.log(`Wrote ${shown.length} tweets (${removed.length} removed).`);
 }
 
 await main();
