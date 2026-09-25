@@ -1,7 +1,43 @@
 {
   "handle": "TheByzGenRL",
-  "updatedAt": "2026-09-25T07:36:59.789Z",
+  "updatedAt": "2026-09-25T09:22:04.223Z",
   "tweets": [
+    {
+      "id": "2103394423971381428",
+      "url": "https://x.com/TheByzGenRL/status/2103394423971381428",
+      "createdAt": "2026-09-25T08:01:24.000Z",
+      "replyTo": "TheByzGenRL",
+      "replyToId": "2103394421366731008",
+      "segments": [
+        {
+          "text": "That simple idea became one of the most influential RL algorithms. Powering work in robotics, games, RLHF, and MARL.\nIt is battle tested and will not die anytime soon. It has become a game changer for devices with low computational power to train reasonable agents."
+        }
+      ],
+      "media": [],
+      "quote": null
+    },
+    {
+      "id": "2103394421366731008",
+      "url": "https://x.com/TheByzGenRL/status/2103394421366731008",
+      "createdAt": "2026-09-25T08:01:23.000Z",
+      "replyTo": null,
+      "replyToId": null,
+      "segments": [
+        {
+          "text": "TRPO: “Let’s mathematically constrain policy updates.”\nPPO: \"What if we just, clip the ratio?\""
+        }
+      ],
+      "media": [
+        {
+          "type": "photo",
+          "src": "https://pbs.twimg.com/media/HTDAzY_bMAABX6t.png",
+          "alt": "",
+          "width": 1674,
+          "height": 1258
+        }
+      ],
+      "quote": null
+    },
     {
       "id": "2102532591027142672",
       "url": "https://x.com/TheByzGenRL/status/2102532591027142672",
