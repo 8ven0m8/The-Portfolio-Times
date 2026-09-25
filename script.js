@@ -1,5 +1,5 @@
 document.getElementById('dateTag').textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
-document.getElementById('yearTag').textContent = '© ' + new Date().getFullYear() + ' The Build Log · All rights reserved';
+document.getElementById('yearTag').textContent = '© ' + new Date().getFullYear() + ' The Portfolio Times · All rights reserved';
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 

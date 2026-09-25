@@ -1,0 +1,9 @@
+# Tweets to show on the Tweets page, one link per line.
+#
+# New tweets usually get picked up automatically every hour. When X blocks that
+# (it often does), paste the tweet's link here and commit; the site updates within
+# a few minutes. Deleted tweets disappear from the site on their own, so you never
+# need to remove lines from this file.
+#
+# Example:
+# https://x.com/TheByzGenRL/status/1234567890123456789

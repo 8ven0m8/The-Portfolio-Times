@@ -143,7 +143,7 @@ a {
   text-align: center;
   box-sizing: border-box;
   margin-bottom: 14px;
-  background-image: url('images/image.png');
+  background-image: url('images/paper-texture.webp');
   background-repeat: repeat;
   animation: navBgSlide 32s linear infinite;
 }
@@ -205,7 +205,7 @@ a {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url('images/image.png');
+  background-image: url('images/paper-texture.webp');
   background-repeat: repeat;
   filter: blur(0px);
   opacity: 0.85;
@@ -1923,6 +1923,240 @@ textarea:focus {
   .cert-status-tag {
     font-size: 10px;
   }
+}
+
+/* ===== Tweets page (The Wire) ===== */
+.nav-links a[aria-current="page"],
+.mobile-drawer a[aria-current="page"] {
+  color: var(--accent);
+}
+
+.nav-links a[aria-current="page"]::after {
+  width: 100%;
+}
+
+.section-head .right a:hover {
+  color: var(--accent);
+}
+
+.wire a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.wire-status {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 19px;
+  color: var(--ink-soft);
+  padding: 8px 0 40px;
+}
+
+.wire-status a {
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 1px solid currentColor;
+  margin-left: 6px;
+}
+
+.wire-body {
+  opacity: 0;
+  transition: opacity .6s ease;
+}
+
+.wire-body.ready {
+  opacity: 1;
+}
+
+.wire-dateline {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 10px;
+}
+
+.wire-latest {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.wire-reply {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+
+.wire-text {
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.6;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+.wire-text a,
+.wire-quote a,
+.wire-reply a {
+  color: var(--accent);
+}
+
+.wire-text a:hover,
+.wire-quote a:hover,
+.wire-reply a:hover {
+  text-decoration: underline;
+}
+
+.wire-foot {
+  font-family: var(--mono);
+  font-size: 11px;
+  margin-top: 14px;
+}
+
+/* Lead: the newest tweet runs large, with its media beside it */
+.wire-lead {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 44px;
+  padding-bottom: 40px;
+  border-bottom: 2px solid var(--rule);
+}
+
+.wire-lead.has-media {
+  grid-template-columns: 1.25fr 1fr;
+  align-items: start;
+}
+
+.wire-lead .wire-text {
+  font-size: clamp(22px, 2.6vw, 30px);
+  line-height: 1.4;
+  font-weight: 500;
+  max-width: 32em;
+}
+
+.wire-lead .wire-text.has-dropcap::first-letter {
+  font-family: 'Chomsky', var(--serif);
+  font-weight: 400;
+  font-size: 3.1em;
+  float: left;
+  line-height: 0.8;
+  margin: 4px 12px 0 0;
+}
+
+.wire-lead .wire-media {
+  margin-top: 0;
+}
+
+.wire-lead .wire-shot img {
+  max-height: 480px;
+}
+
+@media (max-width:800px) {
+  .wire-lead.has-media {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* Briefs: everything older flows down newspaper columns */
+.wire-columns {
+  columns: 3 260px;
+  column-gap: 44px;
+  column-rule: 1px solid var(--rule-faint);
+  padding-top: 32px;
+}
+
+.wire-brief {
+  break-inside: avoid;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--rule-faint);
+}
+
+.wire-media {
+  display: grid;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.wire-media.count-2,
+.wire-media.count-3,
+.wire-media.count-4 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.wire-shot {
+  position: relative;
+  display: block;
+  border: 1px solid var(--rule);
+  background: var(--paper-dim);
+  overflow: hidden;
+}
+
+.wire-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 380px;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.05);
+  transition: filter .3s ease;
+}
+
+.wire-shot:hover img,
+.wire-shot:focus-visible img {
+  filter: none;
+}
+
+.wire-media:not(.count-1) .wire-shot img {
+  aspect-ratio: 1;
+  height: 100%;
+}
+
+.wire-media.count-3 .wire-shot:first-child {
+  grid-column: 1 / -1;
+}
+
+.wire-media.count-3 .wire-shot:first-child img {
+  aspect-ratio: 16 / 9;
+}
+
+.wire-quote {
+  border-left: 2px solid var(--ink);
+  padding-left: 16px;
+  margin-top: 14px;
+}
+
+.wire-quote-by {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+}
+
+.wire-quote-text {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  line-clamp: 6;
+  overflow: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {

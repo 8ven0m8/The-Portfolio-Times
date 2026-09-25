@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <title>Tweets · The Portfolio Times</title>
+  <meta name="description"
+    content="Tweets from Pranjal Sapkota (@TheByzGenRL), kept in sync with X.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="load-seq">
+
+  <div class="scroll-bar" id="scrollBar"></div>
+
+  <div class="ticker">
+    <div class="ticker-track">
+      <span class="ticker-item"><span class="dot"></span>Wanted since 2026</span>
+      <span class="ticker-item"><span class="dot"></span>Currently open to remote AI/ML roles</span>
+      <span class="ticker-item"><span class="dot"></span>Building agentic systems</span>
+      <span class="ticker-item"><span class="dot"></span>VIT Vellore, Class of 2023</span>
+      <span class="ticker-item"><span class="dot"></span>Wanted since 2026</span>
+      <span class="ticker-item"><span class="dot"></span>Currently open to remote AI/ML roles</span>
+      <span class="ticker-item"><span class="dot"></span>Building agentic systems</span>
+      <span class="ticker-item"><span class="dot"></span>VIT Vellore, Class of 2023</span>
+    </div>
+  </div>
+
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <a href="index.html#research">Research</a>
+    <a href="index.html#work">Work</a>
+    <a href="index.html#stack">Stack</a>
+    <a href="index.html#experience">Experience</a>
+    <a href="tweets.html" aria-current="page">Tweets</a>
+    <a href="index.html#contact" class="btn" style="text-align:center;">Hire Me</a>
+  </div>
+
+  <!-- MASTHEAD -->
+  <div class="masthead-bar">
+    <div class="wrap masthead-meta" style="border:none; padding:0;">
+      <span>Bhaktapur / Bagmati / Nepal</span>
+      <span id="editionTag">The Wire Edition</span>
+      <span>Est. 2026</span>
+    </div>
+  </div>
+  <div class="masthead-title">
+    <div class="portfolio-times-box">
+      <h1>The Portfolio Times</h1>
+    </div>
+    <div class="wrap">
+      <div class="masthead-sub">The Build Log of a Software Engineer</div>
+      <div class="masthead-meta" style="border:none; padding-top:14px;">
+        <span id="dateTag"></span>
+        <span>Vol. II</span>
+        <span>Selected Works &amp; Notes</span>
+        <span>Price: One Cup of Coffee</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+      <div class="nav-logo"><a href="index.html">Pranjal Sapkota</a></div>
+      <div class="nav-links">
+        <a href="index.html#research">Research</a>
+        <a href="index.html#work">Work</a>
+        <a href="index.html#stack">Stack</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="tweets.html" aria-current="page">Tweets</a>
+        <a href="index.html#contact" class="btn btn-outline">Hire Me</a>
+      </div>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- THE WIRE -->
+  <main class="section wire">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div>
+          <span class="eyebrow">Intercepted Transmissions</span>
+          <h3>The Wire</h3>
+        </div>
+        <div class="right">Posted by <a href="https://x.com/TheByzGenRL" target="_blank" rel="noopener noreferrer">@TheByzGenRL</a> on X<br>Synced hourly</div>
+      </div>
+
+      <p class="wire-status" id="wireStatus" role="status">Checking the wire…</p>
+      <div class="wire-body" id="wireBody">
+        <div id="wireLead"></div>
+        <div class="wire-columns" id="wireColumns"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-top">
+        <h2>Pranjal Sapkota<br>The Portfolio Times</h2>
+      </div>
+      <div class="footer-grid">
+        <p>A CS engineer building agentic AI systems and full-stack products from Bhaktapur, Nepal.</p>
+        <div>
+          <h6>Sections</h6>
+          <a href="index.html#work">Selected Works</a>
+          <a href="index.html#stack">The Stack</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+        <div>
+          <h6>The Desk</h6>
+          <a href="#">Bhaktapur, Nepal</a>
+          <a href="#">NPT · Remote-first</a>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sapkotapranjal25@gmail.com" target="_blank" rel="noopener noreferrer">sapkotapranjal25@gmail.com</a>
+        </div>
+        <div>
+          <h6>Wire Services</h6>
+          <a href="https://github.com/8ven0m8" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/pranjal-sapkota-6370822a6/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://www.kaggle.com/pranjalsapkota" target="_blank" rel="noopener noreferrer">Kaggle</a>
+          <a href="https://huggingface.co/Pranjal888" target="_blank" rel="noopener noreferrer">Hugging Face</a>
+          <a href="https://x.com/TheByzGenRL" target="_blank" rel="noopener noreferrer">X</a>
+        </div>
+      </div>
+      <div class="stamp" data-reveal><a href="#">Case Open</a></div>
+      <div class="footer-bottom">
+        <span id="yearTag">© 2026 The Portfolio Times · All rights reserved</span>
+        <span>Printed in Bhaktapur</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tweets.js"></script>
+</body>
+
+</html>

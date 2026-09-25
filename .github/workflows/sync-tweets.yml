@@ -1,0 +1,53 @@
+name: Sync tweets
+
+on:
+  schedule:
+    - cron: '23 * * * *' # hourly; GitHub may start scheduled runs a few minutes late
+  push:
+    branches: [main]
+    paths:
+      - data/tweet-links.txt
+      - scripts/sync-tweets.mjs
+      - .github/workflows/sync-tweets.yml
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Accept removing more than half the tweets at once (only if you really deleted them)
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-tweets
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Sync with X
+        run: node scripts/sync-tweets.mjs
+        env:
+          FORCE_SYNC: ${{ inputs.force }}
+
+      - name: Commit changes
+        run: |
+          if git diff --quiet -- data/tweets.json; then
+            echo "Tweets unchanged."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/tweets.json
+          git commit -m "Sync tweets from X"
+          git pull --rebase
+          git push
