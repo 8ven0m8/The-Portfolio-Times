@@ -14,5 +14,5 @@
 # Examples:
 # https://x.com/TheByzGenRL/status/1234567890123456789
 # hide https://x.com/TheByzGenRL/status/1234567890123456789
-hide https://x.com/TheByzGenRL/status/2102532583502545339
-hide https://x.com/TheByzGenRL/status/2102532591027142672
+https://x.com/TheByzGenRL/status/2102532583502545339
+https://x.com/TheByzGenRL/status/2102532591027142672
