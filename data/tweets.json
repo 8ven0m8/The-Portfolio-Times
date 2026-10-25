@@ -1,13 +1,13 @@
 {
   "handle": "TheByzGenRL",
-  "updatedAt": "2026-10-23T18:28:10.247Z",
+  "updatedAt": "2026-10-25T16:33:20.501Z",
   "tweets": [
     {
       "id": "2103394423971381428",
       "url": "https://x.com/TheByzGenRL/status/2103394423971381428",
       "createdAt": "2026-09-25T08:01:24.000Z",
-      "replyTo": "TheByzGenRL",
-      "replyToId": "2103394421366731008",
+      "replyTo": null,
+      "replyToId": null,
       "segments": [
         {
           "text": "That simple idea became one of the most influential RL algorithms. Powering work in robotics, games, RLHF, and MARL.\nIt is battle tested and will not die anytime soon. It has become a game changer for devices with low computational power to train reasonable agents."
