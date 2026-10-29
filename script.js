@@ -68,24 +68,6 @@ if (headline && !reduceMotion) {
   setTimeout(typeChar, 900);
 }
 
-/* Interactive Magnifying Glass Zoom on All Project Exhibit Pictures */
-document.querySelectorAll('.exhibit-shot').forEach((shot) => {
-  const img = shot.querySelector('img');
-  if (img) {
-    shot.addEventListener('mousemove', (e) => {
-      const rect = shot.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      img.style.transformOrigin = `${x}% ${y}%`;
-      img.style.transform = 'scale(2.2)';
-    });
-    shot.addEventListener('mouseleave', () => {
-      img.style.transform = 'scale(1)';
-      img.style.transformOrigin = 'center center';
-    });
-  }
-});
-
 /* Pause navbar animation when stuck to top */
 const navElem = document.querySelector('.nav');
 if (navElem) {
